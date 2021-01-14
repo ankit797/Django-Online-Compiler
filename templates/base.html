@@ -1,0 +1,126 @@
+{% extends 'scroll_top.html' %}
+{% block scroll_top %} <!-- for add scroll_top.html file (scroll up) -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>{% block title %}Online Compiler{% endblock %}</title>
+        <script src="{% static 'js/1jquery.min.js' %}" type="text/javascript" charset="utf-8"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript" charset="utf-8"></script>
+        <script src="{% static 'ace-builds/src/ace.js' %}" type="text/javascript" charset="utf-8"></script>
+        <script src="{% static 'ace-builds/src/ext-statusbar.js' %}" type="text/javascript" charset="utf-8"></script>
+        <script src="{% static 'ace-builds/src/ext-language_tools.js' %}" type="text/javascript" charset="utf-8"></script>
+
+        <script src="{% static 'js/my_js.js' %}" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/my_style6.css' %}" />
+    </head>
+
+    <body>
+        <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}" />
+
+		<nav class="navbar navbar-default">
+
+          <div class="container-fluid">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+
+                </button>
+                <a style="color:#fff;font-family: Andale Mono;" class="navbar-brand" href="{% url 'ide:index'%}">Ankit Maurya</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="topNavBar" style="font-family: Andale Mono;">
+
+                <ul class="nav navbar-nav">
+                    <li class="{% block index_active %}{% endblock %}">
+                        <a  href="{% url 'ide:index'%}">
+                            <span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp; Home
+                        </a>
+                    </li>
+
+                    {% csrf_token %}
+                    {% if user.is_authenticated %} <!-- if user logged in then -->
+
+                    <li class="{% block savecode_active %}{% endblock %}">
+                        <a  href="{% url 'ide:code'%}">
+                            <span class="glyphicon glyphicon-cd" aria-hidden="true"></span>&nbsp; Saved Code
+                        </a>
+                    </li>
+
+                    <li class="{% block Change_Password_active %}{% endblock %}">
+                        <a  href="{% url 'ide:change_password' %}">
+                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>&nbsp; Change Password
+                        </a>
+                    </li>
+
+                    {% else %}
+                    <li class="{% block Forgot_Password_active %}{% endblock %}">
+                        <a  href="{% url 'ide:password_reset' %}">
+                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>&nbsp; Forgot Password
+                        </a>
+                    </li>
+                    {% endif %}
+                    
+                </ul>
+
+
+                <ul class="nav navbar-nav navbar-right ml-auto">
+                    {% csrf_token %}
+                    {% if user.is_authenticated %} <!-- if user logged in then -->
+                        
+                        <li class="{% block profile_active %}{% endblock %}">
+                            <a  href = "{% url 'ide:profile' user.id %}" >
+                                {% if user.userprofile.profile_photo %}
+                                <img class="circle" src="{{ user.userprofile.profile_photo.url }}" height="23" width="23">
+                                {% endif %}
+                                Hello, {{user.username}}
+                            </a>
+
+                        </li>
+                        <li class="{% block update_user_active %}{% endblock %}">
+                            <a href="{% url 'ide:update_user' %}">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Update User
+                            </a>
+                        </li>
+                        <li class="#">
+                            <a href="{% url 'ide:logout' %}">
+                                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp; Logout
+                            </a>
+                        </li>
+                    {% else %}
+                    <li class="{% block login_active %}{% endblock %}">
+                        <a href="{% url 'ide:login' %}">
+                            <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Login
+                        </a>
+                    </li>
+                    <li class="{% block signup_active %}{% endblock %}">
+                        <a href="{% url 'ide:signup' %}">
+                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Signup
+                        </a>
+                    </li>
+
+                    {% endif %}
+
+
+                  <li><a href="#">MyIDE</a></li>
+
+                </ul>
+            </div>
+          </div>
+        </nav>
+
+        {% block body %}{% endblock %}
+
+                <footer class="container">
+            <span class="pull-right"> Copyright © 2020 Ankit Maurya</span>
+        </footer>
+
+    </body>
+</html>
+{% endblock %}

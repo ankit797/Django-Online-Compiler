@@ -1,0 +1,182 @@
+body {
+	overflow-y: scroll;
+	background:white url("../img/center1.jpg");
+}
+.thumbnail{
+      background-image: url("../img/background.png");
+
+}
+.panel-body{
+      background-image: url("../img/background.png");
+
+}
+.Cinzel{/* for change font style as login ka */
+	font-family: Cinzel;
+	font-size: 36;
+	font-weight: bold;
+}
+.activelink{
+  background:#374a6d;;
+}
+.circle{
+  background: lightblue;
+  border-radius: 10%;
+}
+label {
+	display: block;
+	margin-bottom: 5px;
+	font-weight: 600;
+}
+
+hr { 
+    border-color:black;
+    border-width: 2px;
+}
+table {
+  counter-reset: section;
+}
+
+.count:before {
+  counter-increment: section;
+  content: counter(section);
+}
+
+.container{
+	width:70%;
+}
+
+.navbar{
+
+	background-color: #003366;
+}
+.nav.navbar-nav li a {
+    color: #fff;
+	font-size: 20px;
+}
+
+.row{	
+	font-size: 20px;
+	margin-left: 0.3%;
+	margin-right: 0.3%;
+}
+#topbar {
+	margin: 0;
+	padding: 1%;
+	height: auto;
+	background-color: rgb(245, 245, 245);
+	border: 1px solid #ccc;
+    border-radius: 4px 4px 0px 0px;
+    border-bottom: transparent;
+    background-color: rgb(50,50,50);
+    color: skyblue;
+}
+
+.lang-choose {
+	margin: 0;
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	width: 160px;
+}
+#lang{
+	background-color: black;
+	color: skyblue;
+	border-color:black;
+}
+#theme{
+	background-color: black;
+	color: skyblue;
+	border-color:black;
+}
+.theme-choose {
+	margin: 0;
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	float:right; 
+	width: 160px;
+}
+#settings{
+	display:inline;
+}
+
+#editor {
+	margin: 0;
+	padding: 0;
+	height: 500px;
+}
+.checkbox label{
+	color:#666666;
+}
+.input-container {
+	display: none;
+}
+
+.input-textarea {
+	border: 1px solid #aaa;
+	width: 100%;
+	height: 100px;
+	color:white;
+	background:rgb(50,50,50);
+}
+
+.outputbox {
+	margin-top: 20px;
+	display: none;
+}
+
+.output-details {
+	text-align: center;
+	padding: 10px;
+	border: 1px solid #aaa;
+    color:white;
+	border-top: 0px;
+	background: #4a4a4a;
+}
+
+.correct {
+	display: inline-block;
+	margin-right: 6%;
+}
+
+.correct .key {
+	display: inline-block;
+	margin-right: 5px;
+	font-weight: 700;
+}
+
+.outputio .errorkey {
+	font-weight: 700;
+}
+
+.outputio{
+	padding: 15px 30px 30px;
+	border: 1px solid #aaa;
+	background-color: rgb(50,50,50);
+	color: rgb(220,220,220);
+	border-radius: 0px;
+}
+
+.outputerror .errormessage {
+	background: #ff7272;
+	border: 1px solid #faa;
+	padding: 10px;
+	color:#fff;
+	font-weight: 700;
+}
+
+.output-text{
+	background-color:#757373;
+	border-color:black;
+	font-family: monospace;
+}
+.io-show, .outputerror {
+	margin-bottom: 3%;
+}
+
+footer {
+	margin-top: 2%;
+	padding: 1%;
+	border-top: 1px solid #aaa;
+	text-align: center;
+}

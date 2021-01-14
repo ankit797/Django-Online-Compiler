@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}Saved Codes{% endblock %}
+
+{% block savecode_active %}activelink{% endblock %}
+
+{% block body %}
+<div class = "container-fluid" >
+    <div class="col-lg-8 col-lg-offset-2" >
+        <div class="thumbnail">
+
+            <div class="caption">
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Language</th>
+                            <th>Code</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {% for code in codes %}
+                            <tr>
+                                <td><h3 class="count"></h3></td>
+                                <td style="color: red;"><h3>{{code.language}}</h3></td>
+                                <td style="margin: auto;color: blue;">
+                                       {{ code.code|linebreaks }}
+                                </td>
+
+                                <td>
+                                    <form action="{% url 'ide:delete_code' code.id %}" method="post" style="display: inline;">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="code_id" value="{{ code.id }}" />
+                                        <button type="submit" class="btn btn-danger btn-xs">
+                                            <span class="glyphicon glyphicon-remove"></span>&nbsp; Delete
+                                        </button>
+                                    </form>
+                                </td>
+
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
