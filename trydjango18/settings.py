@@ -21,9 +21,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '++zep=_d-f+ba)0zz*g3b!hwz)4=nyqzvl_m-)$e6w%bop4jlj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','django-online-compiler.herokuapp.com/']# check wifi ip(by using ifconfig) and paste here so you can connect in your phone also wia wifi(same network)
+ALLOWED_HOSTS = []# check wifi ip(by using ifconfig) and paste here so you can connect in your phone also wia wifi(same network)
 
 
 # Application definition
@@ -42,7 +42,6 @@ INSTALLED_APPS = (
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
